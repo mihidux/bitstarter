@@ -21,9 +21,11 @@ References:
    - https://developer.mozilla.org/en-US/docs/JSON#JSON_in_Firefox_2
 */
 
+var util = require('util');
 var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
+var rest = require('restler');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
 
@@ -55,6 +57,35 @@ var checkHtmlFile = function(htmlfile, checksfile) {
     return out;
 };
 
+var buildfn = function(html_file_out) {
+    var write_url_to_file = function(result, response) {
+	if (result instanceof Error) {
+            console.error('Error: ' + util.format(response.message));
+	} else {
+            console.error("Wrote %s", html_file_out);
+            fs.writeFileSync(html_file_out, result);
+	}
+    };
+    return write_url_to_file;
+};
+
+var process_url = function(url) {
+    
+    var tmp_file = "temp_file.html";
+
+    //fs.writeFileSync(tmp_file, "test this");
+    //process.exit(1);
+
+    var write_url_to_file = buildfn(tmp_file);
+    rest.get(url).on('complete', write_url_to_file);
+    var checkJson = checkHtmlFile(tmp_file, program.checks);
+    var outJson = JSON.stringify(checkJson, null, 4);
+    console.log(outJson);
+    
+    //console.log("here");
+    //console.log(url);
+}
+
 var clone = function(fn) {
     // Workaround for commander.js issue.
     // http://stackoverflow.com/a/6772648
@@ -65,6 +96,7 @@ if(require.main == module) {
     program
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
         .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
+        .option('-u, --url <url>', 'URL to check', process_url)
         .parse(process.argv);
     var checkJson = checkHtmlFile(program.file, program.checks);
     var outJson = JSON.stringify(checkJson, null, 4);

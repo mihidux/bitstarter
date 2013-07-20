@@ -62,7 +62,7 @@ var buildfn = function(html_file_out) {
 	if (result instanceof Error) {
             console.error('Error: ' + util.format(response.message));
 	} else {
-            console.error("Wrote %s", html_file_out);
+            //console.error("Wrote %s", html_file_out);
             fs.writeFileSync(html_file_out, result);
 	}
     };
@@ -73,14 +73,21 @@ var process_url = function(url) {
     
     var tmp_file = "temp_file.html";
 
+    //console.log(filename);
+    //console.log(url);
+    //console.log(program.tmp_file);
+
     //fs.writeFileSync(tmp_file, "test this");
     //process.exit(1);
 
     var write_url_to_file = buildfn(tmp_file);
     rest.get(url).on('complete', write_url_to_file);
-    var checkJson = checkHtmlFile(tmp_file, program.checks);
-    var outJson = JSON.stringify(checkJson, null, 4);
-    console.log(outJson);
+    
+    program.file = tmp_file;
+    
+    //var checkJson = checkHtmlFile(tmp_file, program.checks);
+    //var outJson = JSON.stringify(checkJson, null, 4);
+    //console.log(outJson);
     
     //console.log("here");
     //console.log(url);

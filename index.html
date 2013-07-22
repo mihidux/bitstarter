@@ -3,16 +3,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>My First Bitstarter</title>
+    <title>SweatWick</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
     <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">    
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
-    <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" 
-          rel="stylesheet" type="text/css">
+
+    <!-- NB: Lumosity uses 'Museo Sans', which is quite nice, but you have to pay for it -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Michroma|Ropa+Sans|Josefin+Sans|Graduate|Damion|Orbitron:400,500|Quattrocento+Sans|Raleway|Bubbler+One' rel='stylesheet' type='text/css'> -->
+    <link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet', type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet', type='text/css'> -->
+    
     <style type="text/css">
 
       /* Large desktop */
@@ -45,19 +50,29 @@
 
       /* Main body and headings */
       body{
-        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+        font-family: 'Josefin Sans', sans-serif;
       }
-      .heading, .subheading {
-        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      .heading {
+	font-family: 'Damion', cursive;
+	text-align: center;
+      }
+
+      h1 {
+	  font-size: 72px;
+      }
+
+      .subheading {
+        font-family: 'Michroma', sans-serif;
         text-align: center;
       }
+
       p.lead {
         padding-top: 1.5%;
-        font-size: 24px;
-        line-height: 30px;
+        font-size: 48px;
+        line-height: 48px;
       }
       p {
-        font-size: 18px;
+        font-size: 24px;
         line-height: 24px;
       }
 
@@ -113,7 +128,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Bitstarter</a>
+          <a class="brand" href="#">SweatWick</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -134,23 +149,30 @@
       <!-- www.google.com/fonts/specimen/Ubuntu#pairings -->
       <div class="row-fluid heading">
         <div class="span12">
-          <h1>Product</h1>
+          <h1>SweatWick</h1>
         </div>
       </div> 
       <div class="row-fluid subheading">
         <div class="span12">
           <!-- Special typography from Bootstrap for lead paragraph. -->
           <!-- http://twitter.github.io/bootstrap/base-css.html#typography -->
-          <p class="lead">One sentence description.</p>
+          <p class="lead">Control your sweat.</p>
         </div>
       </div>
       <div class="row-fluid pitch">
-        <div class="span5 offset1 video">
-          <img class="img-polaroid" src="http://placehold.it/480x300">
+	<!-- <div class="span"></div> -->
+        <div class="span3 offset3 video">
+          <img class="img-polaroid" src="http://i.imgur.com/P7FXcv6.png">
+	</div>
+	<div class="span3 offset0 video">
+          <img class="img-polaroid" src="http://i.imgur.com/COZo44q.png">
         </div>
+	<!-- <div class="span3"></div> -->
+      </div>
 
-        <!-- We define a new 'actions' div to contain statistics, order, and share buttons.-->
-        <div class="span5 actions">
+      <!-- We define a new 'actions' div to contain statistics, order, and share buttons.-->
+      <div class="row-fluid pitch">
+        <div class="span12 actions">
           <div class="span8 offset2">
             <div class="statistics">
               <div class="span4">
